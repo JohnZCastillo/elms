@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +14,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>  
+<body>   
     <div class="wrapper">
+        
         <form action="authenticate.php" method="POST">
             <h4 id="message">Learning Management</h4>
             <input type="text" name="username" id="username" placeholder="username" autocomplete="off">
             <input type="password" name="password" id="password" placeholder="password">
             <input type="submit" name="login" id="login" value="LOGIN">
+          
+                <!-- display error message when logging in-->
+            <?php 
+                    if(isset($_SESSION['error'])){
+                        echo("<div class='error_message'> {$_SESSION['error']} </div> "); 
+                    }
+                    unset($_SESSION['error']);
+            ?>
+
         </form>
+
     </div>    
 </body>
 </html>

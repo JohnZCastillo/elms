@@ -6,6 +6,7 @@
 }
 body{
     overflow-x: hidden;
+    background-color: #76BED0;
 }
 #message{
     text-align: center;
@@ -31,6 +32,12 @@ form{
     gap: 1rem;
     padding: 1.5rem;
     border-radius: 5px;
+    position: relative;
+}
+.error_message{
+    align-self: center;
+    position: absolute;
+    bottom: 110%;
 }
 
 form > *{
@@ -44,4 +51,3 @@ form > *{
     border: none;
     letter-spacing: 3px;
 }
-

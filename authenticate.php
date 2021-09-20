@@ -10,6 +10,8 @@
 
 */
 
+session_start();
+
 //include database identity to this file
 include 'connectionDb.php';
 
@@ -36,18 +38,18 @@ $conn -> close();
 if($username == $tempUser && $password == $tempPass){
     
     if($role == 'teacher'){
-        header('teacher.php');
+        header('location: teacher.php');
         die();
     }
 
 
     if($role == 'student'){
-        header('student.php');
+        header('location: student.php');
         die();
     }
 }
 //reach this line if user input does not match data from database
-echo('not registered');
-
+$_SESSION['error'] = "incorect username or password";
+header('location: index.php');
 
 ?>
