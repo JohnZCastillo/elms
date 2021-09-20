@@ -20,7 +20,7 @@ $tempUser = $_POST['username'];
 $tempPass = $_POST['password'];
 
 //make a connection : there is a limit of 1 incase of duplicate 
-$stmt = $conn->prepare("SELECT * from users where username = ? limit 1");
+$stmt = $conn->prepare("SELECT * from users where id = ? limit 1");
 
 //bind and execute
 $stmt->bind_param("s",$tempUser);
