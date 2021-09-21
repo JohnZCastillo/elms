@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,5 +19,22 @@
             <li>Settings</li>
         <ul>
     </aside>
+
+    <div class="center">
+            <?php
+                include 'connectionDb.php';
+                    echo($_SESSION['id']);
+                    echo($_SESSION['role']);
+                $stmt = $conn -> prepare('SELECT * from student_load');
+                $stmt -> execute();
+                $stmt -> bind_result($subId,$subCode,$subDescrip,$subProf);
+                
+                while($stmt->fetch()){
+                        echo($subId);
+                }
+
+            ?>
+    </div>
+
 </body>
 </html>
