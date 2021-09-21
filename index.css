@@ -38,6 +38,13 @@ form{
     align-self: center;
     position: absolute;
     bottom: 110%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+.error_message > p{
+    font-family: arial;
 }
 
 form > *{
