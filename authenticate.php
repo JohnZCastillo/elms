@@ -28,14 +28,14 @@ $tempUser = $_POST['username'];
 $tempPass = $_POST['password'];
 
 //make a connection : there is a limit of 1 incase of duplicate 
-$stmt = $conn->prepare("SELECT * from users where id = ? limit 1");
+$stmt = $conn->prepare("SELECT * from user where user_id = ? limit 1");
 
 //bind and execute
 $stmt->bind_param("s",$tempUser);
 $stmt->execute();
 
 //bind result to this variables 
-$stmt->bind_result($username, $password,$role);
+$stmt->bind_result($username, $password);
 $stmt -> fetch();
 
 //close connection
@@ -47,18 +47,8 @@ $conn -> close();
 if($username == $tempUser && $password == $tempPass){
     //if found set id and role for retriving data in specified page
     $_SESSION['id'] = $tempUser;
-    $_SESSION['role'] = $role;
-
-    if($role === 'teacher'){
-        header('location: teacher.php');
-        die();
-    }
-
-
-    if($role === 'student'){
-        header('location: student.php');
-        die();
-    }
+    header('location: student.php');
+    die();
 }
 //reach this line if user input does not match data from database
 $_SESSION['error'] = "incorect username or password";
