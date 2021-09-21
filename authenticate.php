@@ -36,7 +36,10 @@ $conn -> close();
 
 //user input is compare to the result from the database  
 if($username == $tempUser && $password == $tempPass){
-    
+    //if found set id and role for retriving data in specified page
+    $_SESSION['id'] = $tempUser;
+    $_SESSION['role'] = $role;
+
     if($role == 'teacher'){
         header('location: teacher.php');
         die();
