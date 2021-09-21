@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+     //if already login then redirect to autheticate.php
+     if(isset($_SESSION['id']) and isset($_SESSION['role'])){
+        header('location: authenticate.php');
+        echo $_SESSION['username'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +21,7 @@
     <title>Document</title>
 </head>
 <body>   
+
     <div class="wrapper">
         
         <form action="authenticate.php" method="POST">
@@ -26,7 +33,7 @@
                 <!-- display error message when logging in-->
             <?php 
                     if(isset($_SESSION['error'])){
-                        echo("<div class='error_message'> {$_SESSION['error']} </div> "); 
+                        echo("<div class='error_message'> <p>{$_SESSION['error']} </p></div> "); 
                     }
                     unset($_SESSION['error']);
             ?>
