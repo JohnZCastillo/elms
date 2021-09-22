@@ -2,6 +2,7 @@
     session_start();
 
      //if already login then redirect to autheticate.php
+     echo($_SESSION['id']);
      if(isset($_SESSION['id'])){
         header('location: authenticate.php');
     }

@@ -12,13 +12,11 @@
 
 session_start();
 //first check if already login 
-if(isset($_SESSION['id']) and isset($_SESSION['role'])){
-    //login
-    if($_SESSION['role'] === 'student'){
+if(isset($_SESSION['id'])){
         header('location: student.php');
         die();
-    }
 }
+
 
 //include database identity to this file
 include 'connectionDb.php';
@@ -44,7 +42,7 @@ $conn -> close();
 
 
 //user input is compare to the result from the database  
-if($username == $tempUser && $password == $tempPass){
+if($username === ((int)$tempUser) && $password === $tempPass){
     //if found set id and role for retriving data in specified page
     $_SESSION['id'] = $tempUser;
     header('location: student.php');
